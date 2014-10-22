@@ -8,7 +8,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
     public partial class MainWindow : Window
     {
-        enum MOV_STATE { ERROR, INICIAL, HACIA_DELANTE, DELANTE, HACIA_ORIGEN, DETECTADO};
+        enum MOV_STATE { ERROR, INICIAL, HACIA_DELANTE, HACIA_ORIGEN, DETECTADO};
         private MOV_STATE estado = MOV_STATE.INICIAL; // estado de la ejecución del movimiento
         private SkeletonPoint p_inicial; // punto inicial del movimiento en 3D
         private float distancia2 = 0.01f; // distancia al cuadrado: 10 cm de distancia
@@ -34,7 +34,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                     this.estado = MOV_STATE.ERROR;
                 } else if ((1.0 - error) * this.distancia2 <= distancia2 && distancia2 <= (1.0 + error) * this.distancia2) {
                     // primera fase completada: mover cadera hacia delante una distancia
-                    this.estado = MOV_STATE.DELANTE;
+                    this.estado = MOV_STATE.HACIA_DELANTE;
                 }
 
             } else if (this.estado == MOV_STATE.HACIA_ORIGEN) {
