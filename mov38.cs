@@ -29,7 +29,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                     (tmp.Y - this.p_inicial.Y) * (tmp.Y - this.p_inicial.Y) + 
                     (tmp.Z - this.p_inicial.Z) * (tmp.Z - this.p_inicial.Z);
 
-                if ((distancia2 > 0.0075) && (tmp.X > this.p_inicial.X)) {
+                if ((distancia2 > 0.0075) && (tmp.Z < this.p_inicial.Z)) {
                     // detecta una dirección incorrecta (salvando el error de medición de Kinect (5 cm))
                     this.estado = MOV_STATE.ERROR;
                 } else if ((1.0 - error) * this.distancia2 <= distancia2 && distancia2 <= (1.0 + error) * this.distancia2) {
