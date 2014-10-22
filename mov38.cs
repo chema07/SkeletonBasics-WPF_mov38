@@ -18,6 +18,28 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         {
             float distancia2;
             SkeletonPoint tmp = skel.Joints[JointType.HipCenter].Position;
+            textBox1.Clear();
+            textBox1.AppendText("Hip Center: " + tmp.X + ", " + tmp.Y + ", " + tmp.Z + "\n\n");
+            textBox1.AppendText("ESTADO: ");
+            switch (this.estado)
+            {
+                case MOV_STATE.DETECTADO:
+                    textBox1.AppendText("DETECTADO");
+                    break;
+                case MOV_STATE.ERROR:
+                    textBox1.AppendText("ERROR");
+                    break;
+                case MOV_STATE.HACIA_DELANTE:
+                    textBox1.AppendText("HACIA_DELANTE");
+                    break;
+                case MOV_STATE.HACIA_ORIGEN:
+                    textBox1.AppendText("HACIA_ORIGEN");
+                    break;
+                case MOV_STATE.INICIAL:
+                    textBox1.AppendText("INICIAL");
+                    break;
+            }
+            textBox1.AppendText("\n");
 
             if (this.estado == MOV_STATE.INICIAL) {
                 // Establecer el punto inicial (final) del movimiento
