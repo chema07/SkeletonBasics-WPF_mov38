@@ -274,6 +274,8 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         /// <param name="drawingContext">drawing context to draw to</param>
         private void DrawBonesAndJoints(Skeleton skeleton, DrawingContext drawingContext)
         {
+            // Añadimos la realimentación al usuario del estado de detección de su 
+            // movimiento de manera gráfica. Cambiamos el color de los arcos (bones).
             Pen hipPen = this.defaultPen;
             Pen othersPen = this.defaultPen;
 
