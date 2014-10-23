@@ -69,22 +69,22 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         /// <summary>
         /// Default pen used for drawing bones
         /// </summary>    
-        private readonly Pen defaultPen = new Pen(Brushes.Gray, 1);
+        private readonly Pen defaultPen = new Pen(Brushes.Gray, 6);
 
         /// <summary>
         /// Pen used for drawing hip bones when bad member movement or incorrect member position
         /// </summary>    
-        private readonly Pen badHipPen = new Pen(Brushes.Red, 1);
+        private readonly Pen badHipPen = new Pen(Brushes.Red, 6);
 
         /// <summary>
         /// Pen used for drawing hip bones that have completed phase 1
         /// </summary>    
-        private readonly Pen phase1HipPen = new Pen(Brushes.LightCyan, 1);
+        private readonly Pen phase1HipPen = new Pen(Brushes.LightCyan, 6);
 
         /// <summary>
         /// Pen used for drawning the whole skeleton when the movement completes phase 2
         /// </summary>    
-        private readonly Pen movementDetectedPen = new Pen(Brushes.Gray, 1);
+        private readonly Pen movementDetectedPen = new Pen(Brushes.Green, 6);
 
         /// <summary>
         /// Active Kinect sensor
