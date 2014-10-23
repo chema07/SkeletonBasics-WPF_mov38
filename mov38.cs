@@ -13,9 +13,10 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         private MOV_STATE estado = MOV_STATE.INICIAL; // estado de la ejecución del movimiento
         private SkeletonPoint p_inicial; // punto inicial del movimiento en 3D
         private float distancia = 0.15f; // distancia en metros
-        private float error_perc = 0.05f; // porcentaje de error en la postura (d ±e%)
+        private float error_perc = 0.05f; // porcentaje de error en la postura (aplicado sobre distancia) (d ±e%)
         private float error_measures = 0.025f; // error en las medidas kinect por componente espacial (v.z ±e)
         private float error_intention = 0.02f; // margen a satisfacer para detectar intención en el movimiento
+        private float error_angulo = 25.0f; // margen de error en el ángulo de la cadera (t ±e)
 
         // Calcula el módulo del vector v
         float vector_mod(SkeletonPoint v)
@@ -84,7 +85,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                     skel.Joints[JointType.HipCenter].Position,
                     skel.Joints[JointType.HipRight].Position) * 180.0f / (float)Math.PI;
                 textBox1.AppendText("Angulo del plano: " + angulo + "\n");
-                if ((angulo >= -25.0f && angulo <= 25.0f) &&
+                if ((angulo >= -error_angulo && angulo <= error_angulo) &&
                     (distancia <= (error_val + error_measures)) &&
                     (Math.Abs(tmp.X - this.p_inicial.X) <= (2 * error_measures + error_val + error_intention)))
                 {
@@ -113,7 +114,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                     // en el peor caso distan 2*X cm (en esa componente). Añadimos un error adicional para
                     // dar margen a la postura y otro para detectar como intencionado el movimiento.
                     this.estado = MOV_STATE.ERROR;
-                } else if (angulo < -25.0f || angulo > 25.0f) {
+                } else if (angulo < -error_angulo || angulo > error_angulo) {
                     this.estado = MOV_STATE.ERROR;
                 } else if ((this.distancia - error_val - error_measures) <= distancia && 
                     distancia <= (this.distancia + error_val + error_measures)) {
@@ -136,7 +137,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                     this.estado = MOV_STATE.ERROR;
                 } else if ((distancia - tmp.Z) > (2 * error_measures + error_val + error_intention)) {
                     this.estado = MOV_STATE.ERROR;
-                } else if (angulo < -25.0f || angulo > 25.0f) {
+                } else if (angulo < -error_angulo || angulo > error_angulo) {
                     this.estado = MOV_STATE.ERROR;
                 } else if (distancia <= (error_val + error_measures)) {
                     // segunda fase completada: mover cadera hacia atrás hasta la posición inicial
