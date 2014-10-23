@@ -15,7 +15,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         private float distancia = 0.15f; // distancia en metros
         private float error_perc = 0.05f; // porcentaje de error en la postura (d ±e%)
         private float error_measures = 0.025f; // error en las medidas kinect por componente espacial (v.z ±e)
-        private float error_intention = 0.05f; // margen a satisfacer para detectar intención en el movimiento
+        private float error_intention = 0.02f; // margen a satisfacer para detectar intención en el movimiento
 
         void movimiento(Skeleton skel)
         {
