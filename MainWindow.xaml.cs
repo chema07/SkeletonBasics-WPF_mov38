@@ -411,5 +411,10 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
                 }
             }
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            this.estado = MOV_STATE.INICIAL;
+        }
     }
 }
