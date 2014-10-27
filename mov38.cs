@@ -135,7 +135,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
                 if (Math.Abs(tmp.X - this.p_inicial.X) > (2 * error_measures + error_val + error_intention)) {
                     this.estado = MOV_STATE.ERROR;
-                } else if ((distancia - tmp.Z) > (2 * error_measures + error_val + error_intention)) {
+                } else if ((distancia - this.distancia) > (2 * error_measures + error_val + error_intention)) {
                     this.estado = MOV_STATE.ERROR;
                 } else if (angulo < -error_angulo || angulo > error_angulo) {
                     this.estado = MOV_STATE.ERROR;
